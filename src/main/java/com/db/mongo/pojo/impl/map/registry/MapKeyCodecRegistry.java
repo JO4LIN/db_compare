@@ -84,8 +84,7 @@ public class MapKeyCodecRegistry {
 
         for(Field field : entityClazz.getDeclaredFields()){
             int modifiers = field.getModifiers();
-            if(Modifier.isTransient(modifiers) || Modifier.isFinal(modifiers)
-                    || Modifier.isStatic(modifiers) || Modifier.isSynchronized(modifiers)){
+            if (Modifier.isTransient(modifiers) || Modifier.isStatic(modifiers) || Modifier.isSynchronized(modifiers)) {
                 continue;
             }
 
@@ -194,8 +193,13 @@ public class MapKeyCodecRegistry {
         return true;
     }
 
-    public MapKeyCodec getKeyCodec(Class<?> clazz){
-        return keyCodecMap.get(clazz);
+    public MapKeyCodec getKeyCodec(Class<?> clazz) {
+        MapKeyCodec mapKeyCodec = keyCodecMap.get(clazz);
+        if (mapKeyCodec == null) {
+            registryKey(clazz);
+            mapKeyCodec = keyCodecMap.get(clazz);
+        }
+        return mapKeyCodec;
     }
 
 }

@@ -5,8 +5,8 @@ import com.db.base.model.Bean1;
 import com.db.hibernate.entity.*;
 import com.db.hibernate.orm.HibernateAccessor;
 import com.db.hibernate.orm.JdbcAccessor;
-import com.db.mongo.entity.*;
 import com.db.mongo.entity.AbstractEntity;
+import com.db.mongo.entity.*;
 import com.db.mongo.orm.MongoDriverAccessor;
 import com.db.mongo.orm.MongoTemplateAccessor;
 import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
@@ -206,7 +206,7 @@ public class ReadBenchMarks {
     public static void main(String[] args) throws RunnerException {
         Options options = new OptionsBuilder()
                 .include(ReadBenchMarks.class.getSimpleName())
-                .output("/Users/linjianghua/Desktop/db4.log")
+                .output("/Users/linjianghua/Desktop/vs_all.log")
                 .build();
         new Runner(options).run();
     }

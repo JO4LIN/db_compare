@@ -1,13 +1,17 @@
 package com.db.mongo.pojo.core.model;
 
 
-import com.db.mongo.pojo.core.anno.Id;
 import com.db.mongo.pojo.core.accesser.PropertyAccessorImpl;
+import com.db.mongo.pojo.core.anno.Id;
 import com.db.mongo.pojo.core.builder.MongoTypeDataBuilder;
 import org.bson.codecs.pojo.TypeWithTypeParameters;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.TypeVariable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author linjianghua
@@ -66,8 +70,7 @@ public class ClassModel<T> {
         // 构建字段信息
         for(Field field : clazz.getDeclaredFields()){
             int modifiers = field.getModifiers();
-            if(!Modifier.isStatic(modifiers) && !Modifier.isFinal(modifiers)
-                    && !Modifier.isTransient(modifiers)){
+            if (!Modifier.isStatic(modifiers) && !Modifier.isTransient(modifiers)) {
                 createPropertyModel(field, getters, setters, genericTypeMap);
             }
         }

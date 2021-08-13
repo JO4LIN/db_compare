@@ -19,6 +19,7 @@ public class Test {
     private class Mock{
         int a;
         int[] b;
+        Integer integer;
         Inter c;
         HashMap d;
 
